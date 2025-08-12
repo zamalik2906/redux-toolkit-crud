@@ -1,12 +1,17 @@
 import React from "react";
 import "./Card.css";
 import CustomModal from "./CustomModal";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "../features/userDetailSlice";
 
 const Card = ({ user }) => {
   const modalId = `userModal-${user.id}`;
 
+  const dispatch = useDispatch();
   const handleEdit = () => {};
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    dispatch(deleteUser(user.id));
+  };
 
   return (
     <>

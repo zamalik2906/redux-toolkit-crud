@@ -18,6 +18,11 @@ const CustomModal = ({ modalId, title = "Modal title", user }) => {
             {user ? (
               <div className="row g-2">
                 <div className="col-12 d-flex align-items-center">
+                  <i className="bi bi-hash text-secondary me-2"></i>
+                  <strong>ID:</strong>
+                  <span className="ms-2">{user.id}</span>
+                </div>
+                <div className="col-12 d-flex align-items-center">
                   <i className="bi bi-person-fill text-primary me-2"></i>
                   <strong>Name:</strong>
                   <span className="ms-2">{user.name}</span>
@@ -37,11 +42,6 @@ const CustomModal = ({ modalId, title = "Modal title", user }) => {
                   <strong>Gender:</strong>
                   <span className="ms-2">{user.gender}</span>
                 </div>
-                <div className="col-12 d-flex align-items-center">
-                  <i className="bi bi-hash text-secondary me-2"></i>
-                  <strong>ID:</strong>
-                  <span className="ms-2">{user.id}</span>
-                </div>
               </div>
             ) : (
               <p>...</p>
@@ -55,9 +55,9 @@ const CustomModal = ({ modalId, title = "Modal title", user }) => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            {/* <button type="button" className="btn btn-primary">
               Save changes
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

@@ -19,7 +19,25 @@ export const createUser = createAsyncThunk(
             // console.log(result);
             return result;
         } catch (error) {
-            return thunkAPI.rejectWithvalue(error);
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
+// Delete Action --> Async thunk
+export const deleteUser = createAsyncThunk(
+    'deleteUser', async (id, thunkAPI) => {
+        const response = await fetch(`https://66e3d64fd2405277ed11fe42.mockapi.io/crud/${id}`, {
+            method: 'DELETE'
+        });
+
+
+        try {
+            const result = await response.json();
+            // console.log(result);
+            return result;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
         }
     }
 );
@@ -34,6 +52,7 @@ export const fetchUsers = createAsyncThunk('fetchUsers', async (thunkAPI) => {
         return thunkAPI.rejectWithvalue(error);
     }
 })
+
 
 // Slice
 export const userDetail = createSlice({
@@ -71,6 +90,9 @@ export const userDetail = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
+            .addCase(deleteUser.fulfilled, (state, action) => {
+                state.users = state.users.filter(user => user.id !== action.payload.id);
+            });
     }
 });
 
