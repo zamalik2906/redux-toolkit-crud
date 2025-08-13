@@ -18,7 +18,7 @@ const Update = () => {
   useEffect(() => {
     if (id) {
       const singleUser = users.find((user) => String(user.id) === String(id));
-      if (singleUser) {
+      if (singleUser.id) {
         setUserData(singleUser);
       }
     }
