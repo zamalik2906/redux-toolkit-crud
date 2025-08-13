@@ -3,12 +3,13 @@ import "./Card.css";
 import CustomModal from "./CustomModal";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../features/userDetailSlice";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ user }) => {
   const modalId = `userModal-${user.id}`;
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleEdit = () => {};
   const handleDelete = () => {
     dispatch(deleteUser(user.id));
   };
@@ -50,9 +51,9 @@ const Card = ({ user }) => {
         <div className="card-footer bg-transparent border-0 text-center pb-3">
           <button
             className="btn btn-outline-primary btn-sm me-2"
-            onClick={handleEdit}
+            onClick={() => navigate(`/update/${user.id}`)}
           >
-            <i className="bi bi-pencil me-1"></i>Edit
+            <i className="bi bi-pencil me-1"></i>Update
           </button>
           <button
             className="btn btn-outline-danger btn-sm me-2"
