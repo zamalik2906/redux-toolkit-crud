@@ -47,8 +47,9 @@ This app lets you **create, read, update, and delete** users, plus **search** an
 
 ### 1️⃣ Clone the Repository
 
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone (https://github.com/zamalik2906/redux-toolkit-crud.git)
+
+cd repo-name
 
 ### 2️⃣ Install Dependencies
 
