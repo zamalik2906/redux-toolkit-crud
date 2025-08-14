@@ -20,11 +20,11 @@ This app lets you **create, read, update, and delete** users, plus **search** an
 
 ### 🏠 Home Page – User Directory
 
-![Home Page]("./screenshots/home.PNG")
+![Home Page](./screenshots/home.PNG)
 
 ### 🎥 Demo Video
 
-<video src="./screenshots/Demo.mp4" controls width="600"></video>
+![Demo Video](./screenshots/Demo.gif)
 
 ---
 
