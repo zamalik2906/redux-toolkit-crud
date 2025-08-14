@@ -24,7 +24,7 @@ This app lets you **create, read, update, and delete** users, plus **search** an
 
 ### 🎥 Demo Video
 
-![Demo Video]("./screenshots/Demo.mp4")
+<video src="./screenshots/Demo.mp4" controls width="600"></video>
 
 ---
 
