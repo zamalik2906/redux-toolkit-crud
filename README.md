@@ -1,12 +1,65 @@
-# React + Vite
+# 🗂️ User Directory – React + Redux Toolkit (MockAPI Backend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **React + Redux Toolkit** CRUD application using **[MockAPI](https://mockapi.io/)** as the backend.  
+This app lets you **create, read, update, and delete** users, plus **search** and **filter** them by gender.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ✅ **User CRUD Operations** (Create, Read, Update, Delete) via MockAPI
+- ✅ **Search Users** by name (case-insensitive)
+- ✅ **Filter Users by Gender** using radio buttons
+- ✅ **Responsive Design** (Bootstrap 5)
+- ✅ **Toast Notifications** for actions and feedback
+- ✅ **Redux Toolkit** for global state management
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📸 Screenshots & Demo
+
+### 🏠 Home Page – User Directory
+
+![Home Page]("./screenshots/home.png")
+
+### 🎥 Demo Video
+
+![Demo Video]("./screenshots/demo.mp4")
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+
+- React.js
+- Redux Toolkit
+- Bootstrap 5
+- React Toastify
+
+**Backend:**
+
+- [MockAPI](https://mockapi.io/) – hosted mock REST API
+
+---
+
+## 📦 Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
+
+### 2️⃣ Install Dependencies
+
+npm install
+
+### 3️⃣ Set Your MockAPI Endpoint
+
+In your Redux slice or API config file, replace the base URL with your own MockAPI endpoint:
+
+export const BASE_URL = "https://your-mockapi-url.mockapi.io/crud";
+
+### 4️⃣ Start the Development Server
+
+npm start

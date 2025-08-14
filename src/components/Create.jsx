@@ -94,6 +94,7 @@ const Create = () => {
                       Full Name
                     </label>
                     <input
+                      autocomplete="off"
                       id="name"
                       name="name"
                       type="text"
@@ -112,6 +113,7 @@ const Create = () => {
                       Email Address
                     </label>
                     <input
+                      autocomplete="off"
                       id="email"
                       name="email"
                       type="email"
@@ -130,6 +132,7 @@ const Create = () => {
                       Age
                     </label>
                     <input
+                      autocomplete="off"
                       id="age"
                       name="age"
                       type="number"
