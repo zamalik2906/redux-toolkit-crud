@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSearchQuery, setGenderFilter } from "../features/userDetailSlice";
 
 const Navbar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
   return (
     <>
       <nav
@@ -97,8 +100,6 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-
-            {/* Search Bar */}
             <form className="d-flex" role="search">
               <div className="input-group" style={{ maxWidth: "300px" }}>
                 <span className="input-group-text bg-white border-0">
@@ -113,55 +114,46 @@ const Navbar = () => {
                     borderRadius: "0 8px 8px 0",
                     boxShadow: "none",
                   }}
+                  onChange={(e) => dispatch(setSearchQuery(e.target.value))}
                 />
               </div>
             </form>
+            {/* Gender Filter */}
+            <div className="d-flex align-items-center ms-3">
+              <label className="me-2 text-white">Gender:</label>
 
-            {/* User Menu */}
-            <div className="ms-3">
-              <div className="dropdown">
-                <button
-                  className="btn btn-outline-light dropdown-toggle d-flex align-items-center"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style={{
-                    borderRadius: "8px",
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = "rgba(255,255,255,0.1)";
-                    e.target.style.borderColor = "rgba(255,255,255,0.5)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = "transparent";
-                    e.target.style.borderColor = "rgba(255,255,255,0.3)";
-                  }}
-                >
-                  <i className="bi bi-person-circle me-2"></i>
-                  <span>Admin</span>
-                </button>
-                <ul className="dropdown-menu dropdown-menu-end shadow">
-                  <li>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <i className="bi bi-gear me-2"></i>
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item d-flex align-items-center"
-                      href="#"
-                    >
-                      <i className="bi bi-box-arrow-right me-2"></i>
-                      Logout
-                    </a>
-                  </li>
-                </ul>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="gender"
+                  value="all"
+                  defaultChecked
+                  onChange={(e) => dispatch(setGenderFilter(e.target.value))}
+                />
+                <label className="form-check-label text-white">All</label>
+              </div>
+
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  onChange={(e) => dispatch(setGenderFilter(e.target.value))}
+                />
+                <label className="form-check-label text-white">Male</label>
+              </div>
+
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  onChange={(e) => dispatch(setGenderFilter(e.target.value))}
+                />
+                <label className="form-check-label text-white">Female</label>
               </div>
             </div>
           </div>

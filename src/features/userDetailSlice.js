@@ -85,8 +85,17 @@ export const userDetail = createSlice({
         users: [],
         loading: false,
         error: null,
+        searchQuery: "",
+        genderFilter: "all"
     },
-    reducers: {},
+    reducers: {
+        setSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
+        },
+        setGenderFilter: (state, action) => {
+            state.genderFilter = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(createUser.pending, (state) => {
@@ -141,5 +150,7 @@ export const userDetail = createSlice({
 
     }
 });
+export const { setSearchQuery, setGenderFilter } = userDetail.actions;
+
 
 export default userDetail.reducer;

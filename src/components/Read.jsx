@@ -7,25 +7,16 @@ import NoUser from "./NoUser";
 
 const Read = () => {
   const dispatch = useDispatch();
-  const { users, loading, error } = useSelector((state) => state.app);
-  // const [selectedUser, setSelectedUser] = useState(null);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const { users, loading, error, searchQuery, genderFilter } = useSelector(
+    (state) => state.app
+  );
 
-  // const openModal = (user) => {
-  //   setSelectedUser(user);
-  //   setIsModalOpen(true);
-  // };
-
-  // const closeModal = () => {
-  //   setIsModalOpen(false);
-  //   setSelectedUser(null);
-  // };
-
+  // Fetch users when component mounts
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  // useEffect() Hook For Toast
+  // Show toast while loading
   useEffect(() => {
     let toastId;
     if (loading) {
@@ -36,14 +27,27 @@ const Read = () => {
     return () => toast.dismiss(toastId);
   }, [loading]);
 
+  // Handle error toast
   if (error) {
     toast.error(error);
     return null;
   }
 
+  // Filter users based on search query
+  const filteredUsers = users
+    // Search filter
+    .filter((user) =>
+      (user.name || "").toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    // Gender filter
+    .filter((user) => {
+      if (genderFilter === "all") return true;
+      return (user.gender || "").toLowerCase() === genderFilter.toLowerCase();
+    });
+
   return (
     <div className="container py-4">
-      {/* User Directory Section Code */}
+      {/* Title */}
       <div className="row mb-4">
         <div className="col">
           <h2 className="text-center mb-3">
@@ -52,22 +56,22 @@ const Read = () => {
           </h2>
           <p className="text-center text-muted">
             <i className="bi bi-info-circle me-1"></i>
-            Total Users: {users.length}
+            Total Users: {filteredUsers.length}
           </p>
         </div>
       </div>
 
-      {/* Cards Component Section */}
+      {/* User Cards */}
       <div className="row g-4">
-        {users.map((item) => (
+        {filteredUsers.map((item) => (
           <div key={item.id} className="col-lg-4 col-md-6 col-sm-12">
             <Card user={item} />
           </div>
         ))}
       </div>
 
-      {/* User Not Found Component Section */}
-      {users.length === 0 && !loading && <NoUser />}
+      {/* No users found */}
+      {filteredUsers.length === 0 && !loading && <NoUser />}
     </div>
   );
 };
